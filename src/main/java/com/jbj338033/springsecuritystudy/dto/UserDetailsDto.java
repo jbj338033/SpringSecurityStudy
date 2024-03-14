@@ -16,12 +16,7 @@ public class UserDetailsDto implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
-        authorities.add(new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-                return user.getRole();
-            }
-        });
+        authorities.add((GrantedAuthority) user::getRole);
 
         return authorities;
     }
